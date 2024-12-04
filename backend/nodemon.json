@@ -1,0 +1,11 @@
+{
+  "watch": ["server.js", "controllers/", "models/", "routes/", "middleware/", "utils/"],
+  "delay": "500",
+  "events": {
+    "restart": "kill-port 5000"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,json"
+}
