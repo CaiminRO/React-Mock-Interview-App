@@ -6,7 +6,9 @@ import Login from './pages/Login';
 import YourTodoList from './pages/YourTodoList';
 import AdminDashboard from "./pages/AdminDashboard";
 import Layout from "./layouts/Layout";
+import AdminLayout from "./layouts/AdminLayout";
 import AuthorizedLayout from "./layouts/AuthorizedLayout";
+import UnauthorizedLayout from "./layouts/UnauthorizedLayout";
 
 const App = () => {
   return (
@@ -18,8 +20,10 @@ const App = () => {
           <Route index element={<Home />} />
 
           {/* Unauthorized ONLY */}
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
+          <Route element={<UnauthorizedLayout />}>
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+          </Route>
 
           {/* Authorized ONLY */}
           <Route element={<AuthorizedLayout />}>
@@ -27,7 +31,9 @@ const App = () => {
           </Route>
 
           {/* Admin ONLY*/}
-          <Route path="admin" element={<AdminDashboard />} />
+          <Route element={<AdminLayout />}>
+            <Route path="admin" element={<AdminDashboard />} />
+          </Route>
 
           {/* Not Found */}
         </Route>
