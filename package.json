@@ -3,9 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd backend && npm run dev",
-    "client": "cd frontend && npm start"
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "install:all": "npm run install:frontend && npm run install:backend",
+
+    "migrate": "cd backend && npx knex migrate:latest",
+    "seed": "cd backend && npx knex seed:run",
+    "migrate:seed": "npm run migrate && npm run seed",
+
+    "setup": "npm run install:all && npm run migrate:seed",
+
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && npm run start",
+    "start:all": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
