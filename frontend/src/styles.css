@@ -1,0 +1,171 @@
+/* src/styles.css */
+
+/* Theme classes */
+body.light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #6200ee;
+    --secondary-color: #eeeeee;
+}
+
+body.dark {
+    --bg-color: #333333;
+    --text-color: #ffffff;
+    --primary-color: #bb86fc;
+    --secondary-color: #444444;
+}
+
+/* Global styles */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+}
+
+.container {
+    padding: 1rem;
+    min-height: calc(100vh - 64px); /* Adjust for nav height */
+}
+
+/* Navigation bar */
+.nav {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+}
+
+.nav a {
+    margin: 0 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+/* Form styles */
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form div {
+    margin-bottom: 1rem;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--text-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.form small {
+    color: red;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+/* To-do list styles */
+.todo-list {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.todo-text {
+    flex: 1;
+    cursor: pointer;
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* User info styles */
+.user-info {
+    margin-top: 2rem;
+}
+
+.user-info h2 {
+    margin-bottom: 1rem;
+}
+
+.user-info p {
+    margin-bottom: 0.5rem;
+}
+
+/* User table styles */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.user-table th,
+.user-table td {
+    border: 1px solid var(--secondary-color);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: var(--secondary-color);
+}
+
+.user-table tr:nth-child(even) {
+    background-color: var(--bg-color);
+}
+
+.user-table tr:nth-child(odd) {
+    background-color: var(--secondary-color);
+}
+
+/* Style action buttons */
+.user-table .button {
+    padding: 0.25rem 0.5rem;
+}
