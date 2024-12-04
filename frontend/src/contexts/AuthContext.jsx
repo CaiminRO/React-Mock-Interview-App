@@ -11,7 +11,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = /* AXIOS REQUEST */;
+        const res = await axios.get('/api/account/profile', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
         setUser(res.data);
       } catch (error) {
@@ -33,7 +35,11 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const res = /* AXIOS REQUEST */;
+      const res = await axios.post(
+        '/api/account/register',
+        userData
+      );
+
       return res.data.message; // Return success message
     }
     catch (error) {
@@ -44,11 +50,15 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const res = /* AXIOS REQUEST */;
+      const res = await axios.post('/api/account/login', {
+        username,
+        password,
+      });
+
       localStorage.setItem('token', res.data.accessToken);
       setToken(res.data.accessToken);
       setIsAuthenticated(true);
-      // No need to call fetchUser here; useEffect will handle it when token changes
+
       return true;
     }
     catch (error) {

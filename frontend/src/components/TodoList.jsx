@@ -11,7 +11,9 @@ const TodoList = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const res = /* AXIOS REQUEST */;
+        const res = await axios.get('/api/todos', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
         setTodos(res.data);
       }
@@ -30,7 +32,11 @@ const TodoList = () => {
 
     if (task.trim()) {
       try {
-        const res = /* AXIOS REQUEST */;
+        const res = await axios.post(
+          '/api/todos',
+          { text: task.trim() },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
         setTodos([...todos, res.data]);
         setTask('');
@@ -44,7 +50,11 @@ const TodoList = () => {
   const toggleComplete = async (id) => {
     try {
       const todo = todos.find((todo) => todo.id === id);
-      const res = /* AXIOS REQUEST */;
+      const res = await axios.put(
+        `/api/todos/${id}`,
+        { completed: !todo.completed },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
       setTodos(todos.map((t) => (t.id === id ? res.data : t)));
     }
@@ -55,7 +65,9 @@ const TodoList = () => {
 
   const deleteTodo = async (id) => {
     try {
-      /* AXIOS REQUEST */;
+      await axios.delete(`/api/todos/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       setTodos(todos.filter((todo) => todo.id !== id));
     }

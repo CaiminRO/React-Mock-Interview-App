@@ -9,7 +9,9 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = /* AXIOS REQUEST */;
+        const res = await axios.get('/api/admin/users', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
         setUsers(res.data);
       }
@@ -33,7 +35,11 @@ const AdminDashboard = () => {
     }
 
     try {
-      /* AXIOS REQUEST */
+      await axios.put(
+        `/api/admin/users/${userId}/admin`,
+        { is_admin: isAdmin },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
       setUsers(
         users.map((user) =>
